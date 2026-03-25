@@ -1192,132 +1192,90 @@
       .chat-window {
         width: 290px;
       }
-      .viajes-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .admin-stats { grid-template-columns: 1fr; }
     }
 
-    /* ══════════════════════════════════════
-       PANEL ADMINISTRADOR
-    ══════════════════════════════════════ */
+    /* ══ ADMIN STYLES ══ */
     :root { --danger: #e05252; }
-
-    /* Botón admin en nav */
     .nav-right { display: flex; align-items: center; gap: 0.8rem; }
-    .nav-admin-btn {
-      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 1rem;
-      border-radius: 50px; font-size: 0.75rem; cursor: pointer;
-      transition: all 0.2s; font-family: 'DM Sans', sans-serif;
-    }
-    .nav-admin-btn:hover { background: rgba(255,255,255,0.15); color: white; }
-
-    /* Modal de login */
-    .admin-overlay {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(10,20,14,0.88); backdrop-filter: blur(8px);
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s;
-    }
+    .nav-admin-btn { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
+    .nav-admin-btn:hover { background: rgba(255,255,255,0.18); color: white; }
+    .admin-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(10,20,14,0.88); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .admin-overlay.open { opacity: 1; pointer-events: all; }
-    .login-box {
-      background: #fff; border-radius: 20px; padding: 2.5rem;
-      width: 100%; max-width: 400px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.3);
-      transform: translateY(20px); transition: transform 0.3s;
-    }
+    .login-box { background: #fff; border-radius: 20px; padding: 2.5rem; width: 100%; max-width: 400px; box-shadow: 0 24px 64px rgba(0,0,0,0.3); transform: translateY(20px); transition: transform 0.3s; }
     .admin-overlay.open .login-box { transform: translateY(0); }
-    .login-logo-text { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--green-deep); text-align: center; margin-bottom: 0.3rem; }
-    .login-logo-sub { display: block; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; margin-bottom: 2rem; }
-    .login-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--green-deep); margin-bottom: 1.5rem; text-align: center; }
+    .login-logo-text { font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 900; color: #1a3a2a; text-align: center; margin-bottom: 0.3rem; }
+    .login-logo-sub { display: block; color: #5a7065; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; margin-bottom: 2rem; }
+    .login-title { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 700; color: #1a3a2a; margin-bottom: 1.5rem; text-align: center; }
     .adm-form-group { margin-bottom: 1.2rem; }
-    .adm-form-group label, .form-group-adm label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
-    .adm-input {
-      width: 100%; padding: 0.75rem 1rem; border: 1.5px solid rgba(0,0,0,0.12);
-      border-radius: 10px; font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
-      outline: none; transition: border-color 0.2s; background: var(--cream);
-    }
-    .adm-input:focus { border-color: var(--green-mid); }
+    .adm-form-group label, .form-group-adm label { display: block; font-size: 0.78rem; font-weight: 500; color: #5a7065; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .adm-input { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 10px; font-size: 0.9rem; font-family: "DM Sans", sans-serif; outline: none; transition: border-color 0.2s; background: #f8f4ee; }
+    .adm-input:focus { border-color: #4a8c5c; }
     @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
     .adm-input.shake { animation: shake 0.4s; }
-    .login-error { color: var(--danger); font-size: 0.8rem; margin-bottom: 1rem; text-align: center; display: none; }
-    .btn-login { width: 100%; padding: 0.9rem; background: var(--green-forest); color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: 'DM Sans', sans-serif; }
-    .btn-login:hover { background: var(--green-deep); }
-    .btn-cancel-login { display: block; text-align: center; margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; background: none; border: none; width: 100%; font-family: 'DM Sans', sans-serif; }
-    .btn-cancel-login:hover { color: var(--text-dark); }
-
-    /* Panel principal admin */
+    .login-error { color: #e05252; font-size: 0.8rem; margin-bottom: 1rem; text-align: center; display: none; }
+    .btn-login { width: 100%; padding: 0.9rem; background: #2d5a3d; color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background 0.2s; font-family: "DM Sans", sans-serif; }
+    .btn-login:hover { background: #1a3a2a; }
+    .btn-cancel-login { display: block; text-align: center; margin-top: 1rem; color: #5a7065; font-size: 0.85rem; cursor: pointer; background: none; border: none; width: 100%; font-family: "DM Sans", sans-serif; }
+    .btn-cancel-login:hover { color: #1a2a1f; }
     .admin-panel { position: fixed; inset: 0; z-index: 200; background: #f0f4f1; overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
     .admin-panel.open { opacity: 1; pointer-events: all; }
-    .admin-topbar { background: var(--green-deep); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 16px rgba(0,0,0,0.2); }
+    .admin-topbar { background: #1a3a2a; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 16px rgba(0,0,0,0.2); }
     .admin-topbar-left { display: flex; align-items: center; gap: 1.2rem; }
-    .admin-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; color: var(--gold); }
-    .admin-badge { background: rgba(212,168,67,0.2); color: var(--gold); font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 50px; font-weight: 500; letter-spacing: 0.08em; }
-    .btn-logout { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+    .admin-logo-text { font-family: "Playfair Display", serif; font-size: 1.3rem; font-weight: 900; color: #d4a843; }
+    .admin-badge { background: rgba(212,168,67,0.2); color: #d4a843; font-size: 0.7rem; padding: 0.2rem 0.7rem; border-radius: 50px; font-weight: 500; }
+    .btn-logout { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.2); padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer; font-size: 0.8rem; font-family: "DM Sans", sans-serif; transition: all 0.2s; }
     .btn-logout:hover { background: rgba(255,255,255,0.2); color: white; }
     .admin-body { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
     .admin-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 2rem; }
     .adm-stat { background: white; border-radius: 12px; padding: 1.2rem 1.4rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
-    .adm-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--green-deep); line-height: 1; }
-    .adm-stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.3rem; }
+    .adm-stat-num { font-family: "Playfair Display", serif; font-size: 2rem; font-weight: 700; color: #1a3a2a; line-height: 1; }
+    .adm-stat-label { font-size: 0.78rem; color: #5a7065; margin-top: 0.3rem; }
     .admin-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2rem; align-items: start; }
     .admin-card { background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
-    .admin-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--green-deep); margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--cream); display: flex; align-items: center; gap: 0.5rem; }
+    .admin-card-title { font-family: "Playfair Display", serif; font-size: 1.2rem; font-weight: 700; color: #1a3a2a; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid #f8f4ee; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .form-group-adm { margin-bottom: 1.1rem; }
-    .form-group-adm .adm-input { background: var(--cream); }
+    .form-group-adm .adm-input { background: #f8f4ee; }
     textarea.adm-input { resize: vertical; min-height: 80px; }
-    select.adm-input { cursor: pointer; }
-    .btn-submit-viaje { width: 100%; padding: 0.9rem; background: var(--earth); color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-    .btn-submit-viaje:hover { background: var(--gold); transform: translateY(-1px); }
-    .adm-form-success { background: rgba(74,140,92,0.1); border: 1px solid var(--green-light); color: var(--green-forest); padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-top: 1rem; display: none; }
+    .btn-submit-viaje { width: 100%; padding: 0.9rem; background: #c4956a; color: white; border: none; border-radius: 10px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: "DM Sans", sans-serif; transition: all 0.2s; margin-top: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+    .btn-submit-viaje:hover { background: #d4a843; transform: translateY(-1px); }
+    .adm-form-success { background: rgba(74,140,92,0.1); border: 1px solid #7dba8a; color: #2d5a3d; padding: 0.8rem 1rem; border-radius: 8px; font-size: 0.875rem; margin-top: 1rem; display: none; }
     .adm-form-success.show { display: block; }
     .viajes-admin-list { display: flex; flex-direction: column; gap: 1rem; }
-    .viaje-admin-item { background: white; border-radius: 12px; padding: 1.2rem 1.4rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; border-left: 4px solid var(--green-mid); transition: box-shadow 0.2s; }
-    .viaje-admin-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    .viaje-admin-item { background: white; border-radius: 12px; padding: 1.2rem 1.4rem; box-shadow: 0 2px 12px rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 1rem; border-left: 4px solid #4a8c5c; }
     .vai-info { flex: 1; }
-    .vai-nombre { font-weight: 600; color: var(--green-deep); font-size: 0.95rem; }
-    .vai-fecha { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .vai-nombre { font-weight: 600; color: #1a3a2a; font-size: 0.95rem; }
+    .vai-fecha { font-size: 0.8rem; color: #5a7065; margin-top: 0.2rem; }
     .vai-meta { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.5rem; }
-    .vai-chip { font-size: 0.72rem; background: var(--cream); color: var(--text-muted); padding: 0.15rem 0.6rem; border-radius: 50px; }
-    .vai-precio-tag { font-weight: 700; color: var(--earth); font-size: 0.9rem; }
-    .btn-delete { width: 32px; height: 32px; border-radius: 8px; background: rgba(224,82,82,0.08); border: 1px solid rgba(224,82,82,0.2); color: var(--danger); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
-    .btn-delete:hover { background: var(--danger); color: white; }
-    .adm-empty { text-align: center; padding: 3rem 1rem; color: var(--text-muted); }
+    .vai-chip { font-size: 0.72rem; background: #f8f4ee; color: #5a7065; padding: 0.15rem 0.6rem; border-radius: 50px; }
+    .vai-precio-tag { font-weight: 700; color: #c4956a; font-size: 0.9rem; }
+    .btn-delete { width: 32px; height: 32px; border-radius: 8px; background: rgba(224,82,82,0.08); border: 1px solid rgba(224,82,82,0.2); color: #e05252; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: all 0.2s; }
+    .btn-delete:hover { background: #e05252; color: white; }
+    .adm-empty { text-align: center; padding: 3rem 1rem; color: #5a7065; }
     .adm-empty-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-
-    /* Sección pública próximos viajes */
-    #proximos-viajes { background: var(--cream); }
+    #proximos-viajes { background: #f8f4ee; }
     .viajes-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .viaje-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(26,58,42,0.08); transition: transform 0.3s, box-shadow 0.3s; border: 1px solid rgba(26,58,42,0.06); }
+    .viaje-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(26,58,42,0.08); transition: transform 0.3s, box-shadow 0.3s; }
     .viaje-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(26,58,42,0.14); }
-    .viaje-fecha-banner { background: var(--green-deep); color: var(--gold); padding: 0.6rem 1.2rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; flex-wrap: wrap; }
+    .viaje-fecha-banner { background: #1a3a2a; color: #d4a843; padding: 0.6rem 1.2rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 500; flex-wrap: wrap; }
     .viaje-body { padding: 1.4rem; }
-    .viaje-tag { display: inline-block; background: rgba(74,140,92,0.12); color: var(--green-forest); font-size: 0.7rem; padding: 0.2rem 0.8rem; border-radius: 50px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
-    .viaje-nombre { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700; color: var(--green-deep); margin-bottom: 0.5rem; }
-    .viaje-desc { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+    .viaje-tag { display: inline-block; background: rgba(74,140,92,0.12); color: #2d5a3d; font-size: 0.7rem; padding: 0.2rem 0.8rem; border-radius: 50px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+    .viaje-nombre { font-family: "Playfair Display", serif; font-size: 1.25rem; font-weight: 700; color: #1a3a2a; margin-bottom: 0.5rem; }
+    .viaje-desc { font-size: 0.875rem; color: #5a7065; line-height: 1.6; margin-bottom: 1rem; }
     .viaje-detalles { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
-    .viaje-detalle { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--text-muted); background: var(--cream); padding: 0.25rem 0.7rem; border-radius: 50px; }
-    .viaje-precio { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--earth); }
-    .viaje-precio span { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
+    .viaje-detalle { font-size: 0.78rem; color: #5a7065; background: #f8f4ee; padding: 0.25rem 0.7rem; border-radius: 50px; }
+    .viaje-precio { font-family: "Playfair Display", serif; font-size: 1.4rem; font-weight: 700; color: #c4956a; }
+    .viaje-precio span { font-family: "DM Sans", sans-serif; font-size: 0.75rem; color: #5a7065; font-weight: 400; }
     .viaje-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.8rem; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.05); }
     .cupos-badge { font-size: 0.75rem; font-weight: 500; }
-    .cupos-badge.ok { color: var(--green-mid); } .cupos-badge.few { color: var(--earth); } .cupos-badge.full { color: var(--danger); }
-    .viaje-wa { background: #25D366; color: white; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; font-size: 0.8rem; font-weight: 500; display: flex; align-items: center; gap: 0.4rem; transition: background 0.2s; }
+    .cupos-badge.ok { color: #4a8c5c; } .cupos-badge.few { color: #c4956a; } .cupos-badge.full { color: #e05252; }
+    .viaje-wa { background: #25D366; color: white; padding: 0.5rem 1.1rem; border-radius: 50px; text-decoration: none; font-size: 0.8rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.4rem; transition: background 0.2s; }
     .viaje-wa:hover { background: #1ebe5a; }
-    .viajes-empty { text-align: center; padding: 4rem 2rem; color: var(--text-muted); grid-column: 1/-1; }
+    .viajes-empty { text-align: center; padding: 4rem 2rem; color: #5a7065; grid-column: 1/-1; }
     .viajes-empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+    @media (max-width: 900px) { .admin-grid { grid-template-columns: 1fr; } .viajes-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .viajes-grid { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } .admin-stats { grid-template-columns: 1fr; } }
 
-    @media (max-width: 900px) {
-      .admin-grid { grid-template-columns: 1fr; }
-      .admin-stats { grid-template-columns: repeat(3,1fr); }
-      .viajes-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      .viajes-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      .admin-stats { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 
@@ -1335,7 +1293,7 @@
     </div>
     <div class="adm-form-group">
       <label>Contraseña</label>
-      <input type="password" class="adm-input" id="loginPass" placeholder="••••••••" autocomplete="current-password" onkeypress="if(event.key===\'Enter\')doLogin()">
+      <input type="password" class="adm-input" id="loginPass" placeholder="••••••••" onkeypress="if(event.key==='Enter')doLogin()">
     </div>
     <p class="login-error" id="loginError">Usuario o contraseña incorrectos.</p>
     <button class="btn-login" onclick="doLogin()">Entrar al panel</button>
@@ -1370,7 +1328,7 @@
             <div class="form-group-adm"><label>Fecha de salida *</label><input type="date" class="adm-input" id="vFecha"></div>
             <div class="form-group-adm"><label>Fecha de regreso</label><input type="date" class="adm-input" id="vFechaFin"></div>
           </div>
-          <div class="form-group-adm"><label>Descripción *</label><textarea class="adm-input" id="vDesc" placeholder="Descripción del viaje para los clientes..."></textarea></div>
+          <div class="form-group-adm"><label>Descripción *</label><textarea class="adm-input" id="vDesc" placeholder="Descripción del viaje..."></textarea></div>
           <div class="form-row">
             <div class="form-group-adm"><label>Precio por persona (COP) *</label><input type="number" class="adm-input" id="vPrecio" placeholder="350000"></div>
             <div class="form-group-adm"><label>Cupos disponibles *</label><input type="number" class="adm-input" id="vCupos" placeholder="15" min="1"></div>
@@ -1413,8 +1371,7 @@
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <div class="nav-right">
-      <a href="https://wa.me/573124711392?text=Hola%20Nasqua,%20quiero%20información%20sobre%20un%20tour" target="_blank"
-        class="nav-cta">Reservar</a>
+      <a href="https://wa.me/573124711392?text=Hola%20Nasqua,%20quiero%20información%20sobre%20un%20tour" target="_blank" class="nav-cta">Reservar</a>
       <button class="nav-admin-btn" onclick="openLogin()">🔐 Admin</button>
     </div>
     <div class="hamburger" onclick="toggleMenu()">
@@ -1470,7 +1427,7 @@
     </div>
   </div>
 
-  <!-- PRÓXIMOS VIAJES (sección pública) -->
+  <!-- PRÓXIMOS VIAJES -->
   <section id="proximos-viajes">
     <div class="section-header reveal">
       <span class="section-tag">✦ Agenda de salidas ✦</span>
@@ -1686,7 +1643,7 @@
       <div class="footer-col">
         <h4>Contacto</h4>
         <div class="contact-item">📱 <a href="tel:+573124711392">+57 312 471 1392</a></div>
-        <div class="contact-item">✉️ <a href="/cdn-cgi/l/email-protection#214f40525054405748454061464c40484d0f424e4c"><span class="__cf_email__" data-cfemail="b7d9d6c4c6c2d6c1ded3d6f7d0dad6dedb99d4d8da">[email&#160;protected]</span></a></div>
+        <div class="contact-item">✉️ <a href="mailto:nasquavida@gmail.com">nasquavida@gmail.com</a></div>
         <div class="contact-item">📸 <a href="https://instagram.com/nasqua_" target="_blank">@nasqua_</a></div>
         <div class="contact-item">📋 RNT: 61372</div>
       </div>
@@ -1744,7 +1701,7 @@
     </button>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // ── SLIDER ──────────────────────────────────
     const slides = document.querySelectorAll('.slide');
     const dotsContainer = document.getElementById('sliderDots');
@@ -1891,10 +1848,11 @@
       //   //   body: JSON.stringify({ chat_id: CHAT_ID, text: message })
       //   // });
       // }
-      // ────────────────────────────────────────────────────
+
 
     // ══════════════════════════════════════════
-    // SISTEMA ADMIN — CONFIG (cambia estas credenciales)
+    // NASQUA ADMIN SYSTEM
+    // Credenciales: usuario=nasqua / pass=nasqua2025
     // ══════════════════════════════════════════
     const ADMIN_USER = 'nasqua';
     const ADMIN_PASS = 'nasqua2025';
@@ -1903,16 +1861,19 @@
     function getViajes(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]')}catch{return[]}}
     function saveViajes(v){localStorage.setItem(STORAGE_KEY,JSON.stringify(v))}
 
-    function formatFecha(d){
+    function fmtFecha(d){
       if(!d)return'';
       const[y,m,day]=d.split('-');
       const M=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
       return parseInt(day)+' '+M[parseInt(m)-1]+' '+y;
     }
-    function getCuposClass(c){const n=parseInt(c);return n<=0?'full':n<=5?'few':'ok'}
-    function getCuposText(c){const n=parseInt(c);return n<=0?'🔴 Sin cupos':n<=5?'🟡 ¡Solo '+n+' cupos!':'🟢 '+n+' cupos disponibles'}
+    function cuposClass(c){const n=parseInt(c);return n<=0?'full':n<=5?'few':'ok'}
+    function cuposTxt(c){const n=parseInt(c);return n<=0?'🔴 Sin cupos':n<=5?'🟡 ¡Solo '+n+' cupos!':'🟢 '+n+' cupos disponibles'}
 
-    function openLogin(){document.getElementById('loginOverlay').classList.add('open');setTimeout(()=>document.getElementById('loginUser').focus(),300)}
+    function openLogin(){
+      document.getElementById('loginOverlay').classList.add('open');
+      setTimeout(()=>document.getElementById('loginUser').focus(),300);
+    }
     function closeLogin(){
       document.getElementById('loginOverlay').classList.remove('open');
       document.getElementById('loginError').style.display='none';
@@ -1922,40 +1883,46 @@
     function doLogin(){
       const u=document.getElementById('loginUser').value.trim();
       const p=document.getElementById('loginPass').value;
-      if(u===ADMIN_USER&&p===ADMIN_PASS){closeLogin();openAdminPanel();}
-      else{
+      if(u===ADMIN_USER && p===ADMIN_PASS){
+        closeLogin(); openAdminPanel();
+      } else {
         document.getElementById('loginError').style.display='block';
         const el=document.getElementById('loginPass');
-        el.value='';el.classList.add('shake');
+        el.value=''; el.classList.add('shake');
         setTimeout(()=>el.classList.remove('shake'),400);
       }
     }
-
     function openAdminPanel(){
       document.getElementById('adminPanel').classList.add('open');
       document.getElementById('adminWelcome').textContent='Bienvenido, '+ADMIN_USER;
       const today=new Date().toISOString().split('T')[0];
       document.getElementById('vFecha').min=today;
       document.getElementById('vFechaFin').min=today;
-      renderAdminList();updateAdminStats();
+      renderAdminList(); updateAdminStats();
     }
     function doLogout(){document.getElementById('adminPanel').classList.remove('open')}
 
     function updateAdminStats(){
-      const v=getViajes();
-      const hoy=new Date();hoy.setHours(0,0,0,0);
-      const en30=new Date();en30.setDate(en30.getDate()+30);
+      const v=getViajes(), hoy=new Date(); hoy.setHours(0,0,0,0);
+      const en30=new Date(); en30.setDate(en30.getDate()+30);
       document.getElementById('statTotal').textContent=v.length;
       document.getElementById('statProximos').textContent=v.filter(x=>{const f=new Date(x.fecha+'T00:00:00');return f>=hoy&&f<=en30}).length;
-      document.getElementById('statCupos').textContent=v.reduce((acc,x)=>acc+parseInt(x.cupos||0),0);
+      document.getElementById('statCupos').textContent=v.reduce((a,x)=>a+parseInt(x.cupos||0),0);
     }
 
     function renderAdminList(){
-      const v=getViajes();
-      const c=document.getElementById('viajesAdminList');
+      const v=getViajes(), c=document.getElementById('viajesAdminList');
       if(!v.length){c.innerHTML='<div class="adm-empty"><div class="adm-empty-icon">🗺</div><p>No hay viajes publicados aún.</p></div>';return}
-      const sorted=[...v].sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
-      c.innerHTML=sorted.map(x=>'<div class="viaje-admin-item"><div class="vai-info"><div class="vai-nombre">'+x.nombre+'</div><div class="vai-fecha">📅 '+formatFecha(x.fecha)+(x.fechaFin?' → '+formatFecha(x.fechaFin):'')+' </div><div class="vai-meta"><span class="vai-chip">'+x.tipo+'</span><span class="vai-chip">⛰ '+x.dificultad+'</span><span class="vai-chip">👥 '+x.cupos+' cupos</span>'+(x.punto?'<span class="vai-chip">📍 '+x.punto+'</span>':'')+'</div></div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:.5rem"><div class="vai-precio-tag">$'+Number(x.precio).toLocaleString('es-CO')+'</div><button class="btn-delete" onclick="eliminarViaje(\''+x.id+'\')" title="Eliminar">🗑</button></div></div>').join('');
+      c.innerHTML=[...v].sort((a,b)=>new Date(a.fecha)-new Date(b.fecha)).map(x=>
+        '<div class="viaje-admin-item"><div class="vai-info">'+
+        '<div class="vai-nombre">'+x.nombre+'</div>'+
+        '<div class="vai-fecha">📅 '+fmtFecha(x.fecha)+(x.fechaFin?' → '+fmtFecha(x.fechaFin):'')+' </div>'+
+        '<div class="vai-meta"><span class="vai-chip">'+x.tipo+'</span><span class="vai-chip">⛰ '+x.dificultad+'</span><span class="vai-chip">👥 '+x.cupos+' cupos</span>'+(x.punto?'<span class="vai-chip">📍 '+x.punto+'</span>':'')+'</div>'+
+        '</div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:.5rem">'+
+        '<div class="vai-precio-tag">$'+Number(x.precio).toLocaleString('es-CO')+'</div>'+
+        '<button class="btn-delete" onclick="eliminarViaje(''+x.id+'')">🗑</button>'+
+        '</div></div>'
+      ).join('');
     }
 
     function publicarViaje(){
@@ -1969,46 +1936,52 @@
       const tipo=document.getElementById('vTipo').value;
       const incluye=document.getElementById('vIncluye').value.trim();
       const punto=document.getElementById('vPunto').value.trim();
-      if(!nombre||!fecha||!desc||!precio||!cupos){alert('Por favor completa todos los campos obligatorios (*)');return}
-      const viaje={id:Date.now().toString(),nombre,fecha,fechaFin,desc,precio,cupos,dificultad,tipo,incluye,punto,creado:new Date().toISOString()};
-      const viajes=getViajes();viajes.push(viaje);saveViajes(viajes);
+      if(!nombre||!fecha||!desc||!precio||!cupos){alert('Completa los campos obligatorios (*)');return}
+      const viaje={id:Date.now().toString(),nombre,fecha,fechaFin,desc,precio,cupos,dificultad,tipo,incluye,punto};
+      const viajes=getViajes(); viajes.push(viaje); saveViajes(viajes);
       ['vNombre','vFecha','vFechaFin','vDesc','vPrecio','vCupos','vIncluye','vPunto'].forEach(id=>document.getElementById(id).value='');
-      const s=document.getElementById('formSuccess');s.classList.add('show');setTimeout(()=>s.classList.remove('show'),4000);
-      renderAdminList();updateAdminStats();renderViajesPublicos();
+      const s=document.getElementById('formSuccess'); s.classList.add('show'); setTimeout(()=>s.classList.remove('show'),4000);
+      renderAdminList(); updateAdminStats(); renderViajesPublicos();
     }
 
     function eliminarViaje(id){
       if(!confirm('¿Eliminar este viaje?'))return;
       saveViajes(getViajes().filter(v=>v.id!==id));
-      renderAdminList();updateAdminStats();renderViajesPublicos();
+      renderAdminList(); updateAdminStats(); renderViajesPublicos();
     }
 
     function renderViajesPublicos(){
       const c=document.getElementById('viajesPublicos');
-      const hoy=new Date();hoy.setHours(0,0,0,0);
+      const hoy=new Date(); hoy.setHours(0,0,0,0);
       const futuros=getViajes().filter(v=>new Date(v.fecha+'T00:00:00')>=hoy).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
       if(!futuros.length){
         c.innerHTML='<div class="viajes-empty"><div class="viajes-empty-icon">🗓</div><p>Próximamente nuevas salidas.<br>Escríbenos al WhatsApp para más info.</p></div>';
         return;
       }
       c.innerHTML=futuros.map(v=>{
-        const waMsg=encodeURIComponent('Hola Nasqua, me interesa el tour a '+v.nombre+' del '+formatFecha(v.fecha)+'. ¿Hay cupos?');
-        const dias=Math.ceil((new Date(v.fecha+'T00:00:00')-hoy)/(1000*60*60*24));
-        const urgente=dias<=15?'<span style="background:#fef3cd;color:#856404;padding:.15rem .6rem;border-radius:50px;font-size:.7rem;font-weight:600">⏰ En '+dias+' días</span>':'';
-        return '<div class="viaje-card"><div class="viaje-fecha-banner">📅 '+formatFecha(v.fecha)+(v.fechaFin?' → '+formatFecha(v.fechaFin):'')+' '+urgente+'</div><div class="viaje-body"><span class="viaje-tag">'+v.tipo+'</span><div class="viaje-nombre">'+v.nombre+'</div><p class="viaje-desc">'+v.desc+'</p><div class="viaje-detalles"><span class="viaje-detalle">⛰ '+v.dificultad+'</span>'+(v.incluye?'<span class="viaje-detalle">✅ '+v.incluye+'</span>':'')+(v.punto?'<span class="viaje-detalle">📍 '+v.punto+'</span>':'')+'</div><div class="viaje-footer"><div><div class="viaje-precio">$'+Number(v.precio).toLocaleString('es-CO')+' <span>/ persona</span></div><div class="cupos-badge '+getCuposClass(v.cupos)+'" style="margin-top:.3rem">'+getCuposText(v.cupos)+'</div></div><a href="https://wa.me/573124711392?text='+waMsg+'" target="_blank" class="viaje-wa">💬 Reservar</a></div></div></div>';
+        const wa=encodeURIComponent('Hola Nasqua, me interesa el tour a '+v.nombre+' del '+fmtFecha(v.fecha)+'. ¿Hay cupos?');
+        const dias=Math.ceil((new Date(v.fecha+'T00:00:00')-hoy)/(864e5));
+        const urg=dias<=15?'<span style="background:#fef3cd;color:#856404;padding:.15rem .6rem;border-radius:50px;font-size:.7rem;font-weight:600">⏰ En '+dias+' días</span>':'';
+        return '<div class="viaje-card">'+
+          '<div class="viaje-fecha-banner">📅 '+fmtFecha(v.fecha)+(v.fechaFin?' → '+fmtFecha(v.fechaFin):'')+' '+urg+'</div>'+
+          '<div class="viaje-body">'+
+          '<span class="viaje-tag">'+v.tipo+'</span>'+
+          '<div class="viaje-nombre">'+v.nombre+'</div>'+
+          '<p class="viaje-desc">'+v.desc+'</p>'+
+          '<div class="viaje-detalles">'+
+            '<span class="viaje-detalle">⛰ '+v.dificultad+'</span>'+
+            (v.incluye?'<span class="viaje-detalle">✅ '+v.incluye+'</span>':'')+
+            (v.punto?'<span class="viaje-detalle">📍 '+v.punto+'</span>':'')+
+          '</div>'+
+          '<div class="viaje-footer">'+
+            '<div>'+
+              '<div class="viaje-precio">$'+Number(v.precio).toLocaleString('es-CO')+' <span>/ persona</span></div>'+
+              '<div class="cupos-badge '+cuposClass(v.cupos)+'" style="margin-top:.3rem">'+cuposTxt(v.cupos)+'</div>'+
+            '</div>'+
+            '<a href="https://wa.me/573124711392?text='+wa+'" target="_blank" class="viaje-wa">💬 Reservar</a>'+
+          '</div>'+
+          '</div></div>';
       }).join('');
-    }
-
-    // Parchear el chat para responder sobre próximos viajes
-    const _origGetResp = getResponse;
-    window.getResponse = function(text){
-      const t=text.toLowerCase();
-      const futuros=getViajes().filter(v=>new Date(v.fecha+'T00:00:00')>=new Date()).sort((a,b)=>new Date(a.fecha)-new Date(b.fecha));
-      if(t.includes('próximo')||t.includes('proximo')||t.includes('fecha')||t.includes('salida')){
-        if(futuros.length>0){const n=futuros[0];return '🗓 El próximo viaje es a '+n.nombre+' el '+formatFecha(n.fecha)+', con '+n.cupos+' cupos disponibles. ¡Escríbenos para reservar!';}
-        return '🗓 Pronto publicaremos nuevas fechas. ¡Contáctanos por WhatsApp!';
-      }
-      return _origGetResp(text);
     }
 
     // Init
